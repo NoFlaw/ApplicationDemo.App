@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ApplicationDemo.Mvc.Models.ContactViewModel>
+
+@{
+    ViewData["Title"] = "Contact Home Page";
+}
+
+<h1>Contacts</h1>
+
+<div class="table-responsive">
+    <table id="contactTable" class="table table-hover table-condensed table-striped">
+        <thead class="text-primary">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmailAddress)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contact in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => contact.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => contact.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => contact.EmailAddress)
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+@section Scripts {
+
+    @(Html.Ext().Grid<dynamic>().Name("contactTable"))
+
+    @*<script type="text/javascript">
+            $(document).ready(function () {
+                $('#contactTable').DataTable({
+                    //"order": [[1, "desc"]] Starts at 0.. 1.. 2
+                });
+            });
+        </script>*@
+}
+
